@@ -1,0 +1,9 @@
+pseudoChat=Saisir votre pseudo : 
+sendChat=Envoyer
+refreshChat=Rafraîchir
+clearChat=Vider historique
+autoChat=Actualisation automatique
+clearMsgChat=L'historique a été vidé avec succès.
+clearInfoChat=Vidage de l'historique
+msgChat=Entrer un message ici
+pseudoMsgChat=Veuillez saisir un pseudo.
