@@ -34,7 +34,7 @@ public class vue_SuppressionSoutenance extends JPanel{
 	private JLabel lblHeure = new JLabel(ApplicationSession.instance().getString("hour")) ; 
 	private JLabel lblSalle = new JLabel(ApplicationSession.instance().getString("roomAdd"));
 	
-	private JLabel lblDate = new JLabel("Date : ");
+	private JLabel lblDate = new JLabel(ApplicationSession.instance().getString("date"));
 	private JLabel lblSlash1  = new JLabel(" / ");
 	private JLabel lblSlash2  = new JLabel(" / ");
 	

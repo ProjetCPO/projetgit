@@ -35,10 +35,10 @@ public class vue_modifSoutenance extends JPanel{
 	private JLabel lblHoraire = new JLabel(ApplicationSession.instance().getString("time")) ; 
 	private JLabel lblHeure = new JLabel(ApplicationSession.instance().getString("hour")) ; 
 	private JLabel lblSalle = new JLabel(ApplicationSession.instance().getString("roomAdd"));
-	private JLabel lblDate = new JLabel("Date : ");
+	private JLabel lblDate = new JLabel(ApplicationSession.instance().getString("date"));
 	private JLabel lblSlash1  = new JLabel(" / ");
 	private JLabel lblSlash2  = new JLabel(" / ");
-	private JLabel lblNbJury = new JLabel("Jury : ");
+	private JLabel lblNbJury = new JLabel(ApplicationSession.instance().getString("jury"));
 	private JLabel lblMbIUT = new JLabel(ApplicationSession.instance().getString("institMember"));
 	private JLabel lblMbPro = new JLabel(ApplicationSession.instance().getString("profMember"));
 	

@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 
 import edu.iut.principal.Agenda;
 import edu.iut.Controleur.ControleurChargement;
+import edu.iut.Controleur.ControleurChat;
 import edu.iut.Controleur.ControleurCreation;
 import edu.iut.Controleur.ControleurLanguage;
 import edu.iut.Controleur.ControleurModificationChoix;
@@ -29,7 +30,7 @@ import edu.iut.Controleur.ControleurSuppression;
 import edu.iut.Outils.ApplicationSession;
 
 public class vue_Options extends JFrame{
-	private JButton btnRechercher, btnSave, btnLoad, btnLanguage;
+	private JButton btnRechercher, btnSave, btnLoad, btnLanguage, btnChat;
 	
 	private JPanel pnlButton;
 	
@@ -41,16 +42,22 @@ public class vue_Options extends JFrame{
 		this.btnRechercher = new JButton(ApplicationSession.instance().getString("search"));
 		this.btnSave = new JButton(ApplicationSession.instance().getString("save"));
 		this.btnLoad = new JButton(ApplicationSession.instance().getString("load"));
+		this.btnChat = new JButton(ApplicationSession.instance().getString("chat"));
 		this.btnLanguage = new JButton(ApplicationSession.instance().getString("language"));
+		this.btnLanguage.setEnabled(false);
 		
 		this.pnlButton = new JPanel();
+		
+		pnlButton.setLayout(new GridLayout(4,1,5,5));
 		
 		this.pnlButton.add(btnRechercher);
 		this.pnlButton.add(btnSave);
 		this.pnlButton.add(btnLoad);
+		if (Agenda.type == ApplicationSession.instance().getString("teacher")) {
+			this.pnlButton.add(btnChat) ; 
+			pnlButton.setLayout(new GridLayout(5,1,5,5));
+		}
 		this.pnlButton.add(btnLanguage);
-		
-		pnlButton.setLayout(new GridLayout(4,1,5,5));
 		
 		this.add(pnlButton);
 		
@@ -62,6 +69,9 @@ public class vue_Options extends JFrame{
 		
 		//CHARGEMENT
 		this.btnLoad.addActionListener(new ControleurChargement()) ;
+		
+		//CHAT
+		this.btnChat.addActionListener(new ControleurChat()) ; 
 		
 		//CHANGER LA LANGUE
 		this.btnLanguage.addActionListener(new ControleurLanguage()) ;  

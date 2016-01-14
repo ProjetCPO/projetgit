@@ -1,18 +1,13 @@
 package edu.iut.principal;
 
-import java.awt.event.WindowAdapter;
-import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 import edu.iut.modeles.Soutenance;
-import edu.iut.Graphique.RecherchePanel;
 import edu.iut.Graphique.vueAgenda;
-import edu.iut.Graphique.vue_Accueil;
+import edu.iut.Graphique.vue_Langage;
 import edu.iut.Outils.ApplicationSession;
 
 public class Agenda extends JFrame{
@@ -24,6 +19,7 @@ public class Agenda extends JFrame{
 
 	public static Soutenance soutenances[][] = new Soutenance[22][5] ; //22 horaires et 5 jours
 	public static Agenda agenda ; 
+	public static String type ; 
 	
 	private Agenda(String s){
 		super(s);
@@ -55,14 +51,7 @@ public class Agenda extends JFrame{
     //***********************
 
 	public static void main(String[] args) {
-		if (args.length > 0) {
-			if (args[0].equals("-fr"))
-				ApplicationSession.instance().setLocale(Locale.FRANCE) ; 
-		}
-		else
-			//ApplicationSession.instance().setLocale(Locale.US) ; 
-		ApplicationSession.instance().setLocale(Locale.CHINA) ; 
-		vue_Accueil accueil = new vue_Accueil();
+		vue_Langage langage = new vue_Langage();
 	}
 	
 }

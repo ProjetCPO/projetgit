@@ -1,0 +1,2 @@
+- Le chat n'est disponible que pour les utilisateurs enseignants
+- Taper un apostrophe ' ou un guillemet " dans le chat fera planter le programme, dans la mesure où ce sera interprété comme un début ou une fin de chaîne

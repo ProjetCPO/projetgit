@@ -22,12 +22,13 @@ import javax.swing.JTextPane;
 import javax.swing.Timer;
 
 import oracle.*;
+import edu.iut.Outils.ApplicationSession;
 import edu.iut.modeles.Chat;
 
 public class VueChat extends JPanel {
 	
 	//JLABELS
-	private JLabel lPseudo = new JLabel("Saisir votre pseudo : ") ; 
+	private JLabel lPseudo = new JLabel(ApplicationSession.instance().getString("pseudoChat")) ; 
 	
 	//JTEXTFIELDS
 	private JTextField tfPseudo = new JTextField() ; 
@@ -41,12 +42,12 @@ public class VueChat extends JPanel {
 	private JScrollPane spMessage = new JScrollPane() ; 
 	
 	//JBUTTONS
-	private JButton bSend =  new JButton("Envoyer") ; 
-	private JButton bRefresh = new JButton("Rafraîchir") ; 
-	private JButton bClear = new JButton("Vider historique") ; 
+	private JButton bSend =  new JButton(ApplicationSession.instance().getString("sendChat")) ; 
+	private JButton bRefresh = new JButton(ApplicationSession.instance().getString("refreshChat")) ; 
+	private JButton bClear = new JButton(ApplicationSession.instance().getString("clearChat")) ; 
 	
 	//JCHECKBOXES
-	private JCheckBox cbRefresh = new JCheckBox("Actualisation automatique") ; 
+	private JCheckBox cbRefresh = new JCheckBox(ApplicationSession.instance().getString("autoChat")) ; 
 	
 	//PANELS
 	private JPanel pnlText = new JPanel() ; 
@@ -83,7 +84,7 @@ public class VueChat extends JPanel {
 				VueChat.instance().chat.viderHistorique() ; 
 
 				VueChat.instance().tpText.setText("") ; 
-				JOptionPane.showMessageDialog(null, "L'historique a été vidé avec succès.", "Vidage de l'historique", JOptionPane.INFORMATION_MESSAGE) ; 
+				JOptionPane.showMessageDialog(null, ApplicationSession.instance().getString("clearMsgChat"), ApplicationSession.instance().getString("clearInfoChat"), JOptionPane.INFORMATION_MESSAGE) ; 
 			}
 			
 		}) ; 
@@ -97,14 +98,14 @@ public class VueChat extends JPanel {
 		tpMessage.addFocusListener(new FocusListener() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if (((JTextPane) e.getComponent()).getText().equals("Entrer un message ici"))
+				if (((JTextPane) e.getComponent()).getText().equals(ApplicationSession.instance().getString("msgChat")))
 					((JTextPane) e.getComponent()).setText("") ; 
 			}
 
 			@Override
 			public void focusLost(FocusEvent e) {
 				if (((JTextPane) e.getComponent()).getText().equals(""))
-					((JTextPane) e.getComponent()).setText("Entrer un message ici") ; 
+					((JTextPane) e.getComponent()).setText(ApplicationSession.instance().getString("msgChat")) ; 
 			}
 		}) ; 
 		
@@ -117,9 +118,9 @@ public class VueChat extends JPanel {
 				String pseudo = VueChat.instance().tfPseudo.getText() ; 
 				
 				if (pseudo.length() < 1)
-					JOptionPane.showMessageDialog(null, "Veuillez saisir un pseudo.", "Erreur", JOptionPane.ERROR_MESSAGE) ; 
+					JOptionPane.showMessageDialog(null, ApplicationSession.instance().getString("pseudoMsgChat"), ApplicationSession.instance().getString("error"), JOptionPane.ERROR_MESSAGE) ; 
 				else {
-					if (!VueChat.instance().tpMessage.getText().equals("Entrer un message ici") && !VueChat.instance().tpMessage.getText().equals("")) {
+					if (!VueChat.instance().tpMessage.getText().equals(ApplicationSession.instance().getString("msgChat")) && !VueChat.instance().tpMessage.getText().equals("")) {
 						String temp = chat.actualiser() ; 
 						if (temp.length() > 3) {
 							if (temp.substring(0,4).equals("null"))
@@ -137,7 +138,7 @@ public class VueChat extends JPanel {
 						VueChat.instance().tpMessage.setText("") ; 
 					}
 					else
-						JOptionPane.showMessageDialog(null, "Veuillez saisir un message.", "Erreur", JOptionPane.ERROR_MESSAGE) ; 
+						JOptionPane.showMessageDialog(null, ApplicationSession.instance().getString("plsMsgChat"), ApplicationSession.instance().getString("error"), JOptionPane.ERROR_MESSAGE) ; 
 				}
 			}
 			
@@ -174,7 +175,7 @@ public class VueChat extends JPanel {
 		return pChat ; 
 	}
 	
-	private void actualiser() {
+	public void actualiser() {
 		String text = VueChat.instance().getChat().actualiser() ; 
 		VueChat.instance().getTpText().setText(text) ; 
 	}
@@ -212,27 +213,6 @@ public class VueChat extends JPanel {
 	
 	public JCheckBox getCbRefresh() {
 		return cbRefresh ; 
-	}
-	
-	public static void main(String[] args) {
-		JFrame test = new JFrame("Université Paris-Sud") ; 
-		System.err.println("\u8B1D\u8B1D");
-		
-		VueChat vChat = VueChat.instance() ; 
-		
-		vChat.setChat(new Chat()) ; 
-		
-		test.add(vChat) ; 
-		
-		String url="jdbc:oracle:thin:pnguyen/motdepasse@oracle.iut-orsay.fr:1521:etudom" ; 
-		Chat.openConnection(url) ; 
-		if (!vChat.getChat().prepareHisto())
-			vChat.actualiser() ; 
-		vChat.demarrerChrono() ; 
-		
-		test.pack() ; 
-		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ; 
-		test.setVisible(true) ; 
 	}
 	
 }

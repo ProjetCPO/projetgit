@@ -1,0 +1,4 @@
+CREATE TABLE Historique(
+Num INTEGER PRIMARY KEY,
+text VARCHAR2(4000),
+plein INTEGER);

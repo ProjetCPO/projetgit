@@ -21,7 +21,7 @@ public class RecherchePanel extends JPanel {
 	private JLabel lNom = new JLabel(ApplicationSession.instance().getString("nameSearch")) ; 
 	private JTextField tNom = new JTextField() ; 
 	private JButton bSalle = new JButton(ApplicationSession.instance().getString("room")) ; 
-	private JButton bJury = new JButton("Jury") ; 
+	private JButton bJury = new JButton(ApplicationSession.instance().getString("jury")) ; 
 	public static boolean estInstancie = false;
 	
 	public RecherchePanel() {

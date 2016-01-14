@@ -72,10 +72,11 @@ public class vue_Accueil extends JFrame implements ActionListener {
     //***********************
     //     	 LISTENERS 		 *
     //***********************
-    public void actionPerformed(ActionEvent e)
-    {
+    public void actionPerformed(ActionEvent e) {
    	 // On indique quel bouton a été cliqué
    	 JButton btn = (JButton) e.getSource();
+   	 
+   	 Agenda.type = btn.getText() ; 
    	 
    	 if (btn.getText() == ApplicationSession.instance().getString("student"))
    	 {
