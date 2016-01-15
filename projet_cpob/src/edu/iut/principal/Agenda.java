@@ -1,14 +1,11 @@
 package edu.iut.principal;
 
-import java.util.Locale;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import edu.iut.modeles.Soutenance;
 import edu.iut.Graphique.vueAgenda;
 import edu.iut.Graphique.vue_Langage;
-import edu.iut.Outils.ApplicationSession;
 
 public class Agenda extends JFrame{
 	public static vueAgenda GUIAgenda; 	

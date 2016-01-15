@@ -59,9 +59,11 @@ public class VueChat extends JPanel {
 	private Chat chat ; 
 	
 	//TIMER
-	private Timer chrono ; 
+	public static Timer chrono ; 
 	
 	private static VueChat pChat = null ; 
+	
+	public static boolean estInstancie;
 	
 	private VueChat() {
 		super() ; 
